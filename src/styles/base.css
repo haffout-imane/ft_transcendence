@@ -1,0 +1,109 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Background and UI Container */
+  .home-background {
+    background-image: url('./../../assets/space.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .home-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+  }
+  
+  .ui-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Logo, Profile, Settings, Chat Icons */
+  .logo-link {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 2;
+  }
+  
+  .logo-icon {
+    width: 150px;
+    height: auto;
+  }
+  
+  .profile-link {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    z-index: 2;
+  }
+  
+  .profile-icon {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .settings-link {
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    z-index: 2;
+  }
+  
+  .settings-icon {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .chat-link {
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
+    z-index: 2;
+  }
+  
+  .chat-icon {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .profile-icon:hover,
+  .settings-icon:hover,
+  .chat-icon:hover,
+  .next-icon:hover,
+  .previous-icon:hover {
+    transform: scale(1.15);
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .window {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1900px;
+    height: 900px;
+    transform: translate(-50%, -50%);
+    background: rgba(158, 185, 254);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
