@@ -3,7 +3,7 @@ export function renderGamePage() {
     if (!app) return;
   
     app.innerHTML = `
-    <div class="home-background">
+    <div class="game-background">
     </div>
     `;
   }

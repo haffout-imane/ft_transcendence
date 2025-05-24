@@ -1,8 +1,26 @@
 import { initRouter } from "./utils/router.js";
-import { serveInitialPage } from "./pages/servePage.js";
+import { connectWebSocket } from "./utils/socket.js";
+import { handleChatMessage } from "./utils/socket.js";
+  
 
 document.addEventListener("DOMContentLoaded", () => {
   initRouter();
   
-  serveInitialPage();
+  // websocket connection
+  connectWebSocket();
+
+
+  // const testMessage = {
+  //   type: "chat",
+  //   payload: {
+  //     from: "Alice",
+  //     text: "Hello, how are you?",
+  //     timestamp: new Date().toISOString(),
+  //   },
+  // };
+  // handleChatMessage(testMessage.payload);
+
+
+  
+
 });

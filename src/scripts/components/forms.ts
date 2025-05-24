@@ -6,13 +6,13 @@ export function renderLoginForm() {
     if (!container) return;
     
     container.innerHTML = `
-    <div class="auth-layout">
+    <div class="auth-layout">  
         <div class="logo">
-        <img src="./../assets/logo.png">
+            <img src="./../assets/logo.png">
         </div>
         <div class="wrapper">
             <form id="login-form">
-                <h1 class="Space_Font">Login</h1>
+                <h1 class="Space_Font_auth">Login</h1>
                 <p class="first_p">Email</p>
                 <div>
                     <input type="email" id="login-email" placeholder="Username@gmail.com" required>
@@ -55,7 +55,7 @@ export function renderRegisterForm() {
     <div class="auth-layout">
         <div class="wrapper">
             <form id="register-form">
-                <h1 class="Space_Font">Sign Up</h1>
+                <h1 class="Space_Font_auth">Sign Up</h1>
                 <div class="form-group">
                     <p class="first_p">Username</p>
                     <input type="text" id="register-username" required placeholder="ihajouji">

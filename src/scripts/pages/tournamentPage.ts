@@ -3,7 +3,12 @@ export function renderTournamentPage() {
     if (!app) return;
   
     app.innerHTML = `
-    <div class="home-background">
+    <div class="tournament-container">
+    
+		<div class="game-background">
+			
+		</div>
+
     </div>
     `;
   }

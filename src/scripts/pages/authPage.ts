@@ -6,6 +6,7 @@ export function renderAuthPage() {
 
     mainPage.innerHTML = `
         <div class="auth-container">
+
             <div id="auth-form-container"></div>
         </div>`
     ;

@@ -1,0 +1,26 @@
+@keyframes fall {
+    0% {
+      transform: translate(-50%, -200%) scale(1.2) rotate(-15deg);
+      opacity: 0;
+    }
+    60% {
+        transform: translate(-50%, -52%) scale(1.05) rotate(3deg);
+        opacity: 1;
+      }
+      80% {
+        transform: translate(-50%, -51%) scale(1) rotate(-1deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+      }
+  }
+
+.vs-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 73%;
+    height: auto;
+    animation: fall 1.5s ease-out forwards;
+}

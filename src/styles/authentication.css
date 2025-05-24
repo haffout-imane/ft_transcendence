@@ -102,7 +102,7 @@ html, body {
   src: url('./../fonts/space age.ttf') format('truetype');
 }
 
-.Space_Font {
+.Space_Font_auth {
   font-family: 'Space Age', sans-serif;
   color: aliceblue;
   font-size: 3rem;
@@ -204,4 +204,72 @@ html, body {
   width: 20px;  /* Adjust the size of the logo */
   height: auto;
   object-fit: contain;
+}
+
+
+/* custom alert */
+
+#custom-alert-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-alert {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  min-width: 250px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.3s ease-out forwards;
+  overflow: hidden;
+}
+
+.custom-alert span {
+  margin-right: 16px; /* Pushes text away from the button */
+}
+
+.custom-alert button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-alert .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: #4caf50; /* green */
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: fillProgress 5s linear forwards;
+  border-radius: 0 0 8px 8px;
+}
+
+@keyframes fillProgress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

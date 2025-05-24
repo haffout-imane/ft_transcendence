@@ -3,17 +3,70 @@ import { renderLoginForm } from '../components/forms.js';
 export const authService = {
     async login(email: string, password: string) {
         console.log('Login attempt:', email);
-        if (email === "fail@example.com") {
-            return { success: false, message: "Invalid credentials." };
+    
+        const storedUser = localStorage.getItem('user');
+        if (!storedUser) {
+            return { success: false, message: "No registered user." };
         }
-        return { success: true, token: 'mock-token' };
+    
+        const user = JSON.parse(storedUser);
+        if (user.email === email && user.password === password) {
+            return { success: true, token: 'mock-token' };
+        }
+    
+        return { success: false, message: "Invalid credentials." };
     },
 
     async register(username: string, email: string, password: string) {
         console.log('Register attempt:', username, email);
+    
+        const user = {
+            username,
+            email,
+            password, // storing plaintext for now (mock only)
+            slogan: "Hey there!", // default slogan
+            twoFa: false
+        };
+    
+        localStorage.setItem('user', JSON.stringify(user));
+    
+        return { success: true };
+    },
+
+    async logout() {
+        localStorage.removeItem('auth_token');
         return { success: true };
     }
+    
 };
+
+export function showCustomAlert(message) {
+    const container = document.getElementById('custom-alert-container');
+  
+    const alert = document.createElement('div');
+    alert.className = 'custom-alert';
+    alert.innerHTML = `
+      <span>${message}</span>
+      <button onclick="this.parentElement.remove()">×</button>
+      <div class="progress-bar"></div>
+    `;
+  
+    container.appendChild(alert);
+  
+    // Auto-remove after 5 seconds
+    const timeout = setTimeout(() => {
+      if (alert.parentElement) {
+        alert.remove();
+      }
+    }, 5000);
+  
+    // If user closes early, cancel timer
+    alert.querySelector('button').addEventListener('click', () => {
+      clearTimeout(timeout);
+    });
+  }
+  
+  
 
 export function setupLoginForm() {
     const form = document.getElementById('login-form') as HTMLFormElement;
@@ -31,14 +84,16 @@ export function setupLoginForm() {
         // 'trim()' removes whitespace from the beginning and end of the email
     
         if (!email || !password) {
-            alert("Please fill in all fields.");
+            // alert("Please fill in all fields.");
+            showCustomAlert("Please fill in all fields.");
             return;
         }
         // Basic check to ensure both fields are filled in
     
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address.");
+            // alert("Please enter a valid email address.");
+            showCustomAlert("Please enter a valid email address.");
             return;
         }
         // Use a regular expression to check if the email is in a valid format
@@ -53,7 +108,8 @@ export function setupLoginForm() {
             window.location.href = '/';
             // Redirect to the homepage (or dashboard) after successful login
         } else {
-            alert("Login failed. Please check your credentials.");
+            // alert("Login failed. Please check your credentials.");
+            showCustomAlert("Login failed. Please check your credentials.");
             // Show an error message if the login was unsuccessful
         }
     });
@@ -70,23 +126,26 @@ export function setupRegisterForm() {
         const confirm = (document.getElementById('register-confirm') as HTMLInputElement).value;
 
         if (password !== confirm) {
-            alert("Passwords don't match!");
+            // alert("Passwords don't match!");
+            showCustomAlert("Passwords don't match!");
             return;
         }
 
         const result = await authService.register(username, email, password);
         if (result.success) {
-            alert('Registration successful! Please login.');
+            // alert('Registration successful! Please login.');
+            showCustomAlert('Registration successful! Please login.');
             renderLoginForm(); // <- you'll fix this in a sec
             document.querySelector('.auth-tab[data-tab="login"]')?.classList.add('active');
             document.querySelector('.auth-tab[data-tab="register"]')?.classList.remove('active');
         }
         else
-            alert('Registration failed. Please try again.');
+            // alert('Registration failed. Please try again.');
+            showCustomAlert('Registration failed. Please try again.');
     });
 }
 
-export const auth = {
+export const authToken = {
     isAuthenticated: false,
 
     checkAuth(): boolean {
@@ -105,6 +164,19 @@ export const auth = {
         this.isAuthenticated = false; // Set the auth status to false
     }
 };
+
+
+export function getUserData() {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+}
+
+export function updateUserData(updated: Partial<{ username: string, slogan: string, twoFA: boolean }>) {
+    const user = getUserData();
+    if (!user) return;
+    const newUser = { ...user, ...updated };
+    localStorage.setItem('user', JSON.stringify(newUser));
+}
 
 
 
@@ -139,7 +211,7 @@ export const auth = {
 //             body: JSON.stringify({ username, email, password }),
 //         });
 
-//         const data = await response.json();
+//         const data = await response.`json`();
 
 //         if (!response.ok) {
 //             return { success: false, message: data.error };

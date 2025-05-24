@@ -1,3 +1,5 @@
+import { handleChatMessage } from "../utils/socket.js";
+
 export function renderHomePage() {
   const app = document.getElementById("main-page");
   if (!app) return;
@@ -19,7 +21,7 @@ export function renderHomePage() {
         </a>
 
         <a href="/chat" data-link class="chat-link">
-          <img src="/assets/chat/chat_1.png" alt="Chat" class="chat-icon" />
+          <img id="chat-image" src="/assets/chat/chat_1.png" alt="Chat" class="chat-icon" />
         </a>
 
         <div class="carousel-wrapper">
@@ -77,4 +79,13 @@ export function renderHomePage() {
   });
 
   updateCarousel();
+
+  // let payload = {
+  //   from: "Alice",
+  //   text: "Hello, how are you?",
+  //   timestamp: new Date().toISOString(),
+  //   };
+  // handleChatMessage(payload);
+
+
 }
