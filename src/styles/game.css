@@ -20,7 +20,7 @@
     background-position: top center;
   
     animation-name: panDown;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-delay: 0.3;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
