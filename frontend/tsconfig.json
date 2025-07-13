@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "lib": ["ES2020", "DOM"],           // ES2020 includes BigInt, AsyncIterable, etc.
+    "rootDir": "./src",
+    "module": "esnext",
+    "target": "ES2020",                 // Upgraded from ES6 to ES2020
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["node"],                  // <-- add this line to get node built-in types
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

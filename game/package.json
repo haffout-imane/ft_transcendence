@@ -1,0 +1,24 @@
+{
+    "name": "websocket",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@fastify/websocket": "^11.1.0",
+        "@prisma/client": "^6.10.1",
+        "fastify": "^5.4.0",
+        "prisma": "^6.10.1",
+        "redis": "^5.5.6",
+        "uuid": "^11.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}

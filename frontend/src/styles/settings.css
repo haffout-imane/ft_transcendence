@@ -1,0 +1,298 @@
+.profile-edit-header {
+  display: flex;
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  width: 30%;
+  height: 6%;
+  background: rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-edit-header {
+  display: flex;
+  position: absolute;
+  top: 2%;
+  right: 10%;
+  width: 30%;
+  height: 6%;
+  background: rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-edit {
+  display: flex;
+  flex-direction: column; /* Stack picture-edit and profile-form vertically */
+  align-items: center; /* Center content horizontally */
+  position: absolute;
+  object-fit: cover;
+  top: 10%;
+  left: 1%;
+  bottom: 2%;
+  height: auto;
+  width: 48.5%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding-top: 5%;
+}
+
+.theme-edit {
+  display: flex;
+  position: absolute;
+  flex-direction: column; /* Stack picture-edit and profile-form vertically */
+  top: 10%;
+  right: 1%;
+  bottom: 2%;
+  height: auto;
+  width: 48.5%;
+  background: rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+}
+
+.Space_Font_settings {
+  font-family: 'Space Age', sans-serif;
+  color: aliceblue;
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+
+.picture-edit {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Space between picture and form */
+}
+
+.profile-edit p{
+  color: white;
+  margin: 0 0 0.3rem 0;
+  font-size: 1.2rem;
+}
+
+
+.profile-form input{
+  display: block;
+  width: 500px;
+  height: 45px;
+  margin-bottom: 25px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.profile-form input::placeholder {
+text-align: left;
+color: rgb(164, 163, 163);
+opacity: 1;
+}
+
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.profile-picture-pen {
+  position: absolute;
+  bottom: 5px;    /* Bottom right corner of the picture */
+  right: 0;
+  transform: translate(50%, 50%); /* Slightly outside corner for better visibility */
+  cursor: pointer;
+  border-radius: 100%;
+  padding: 2px;
+}
+
+.profile-picture-pen img {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.first_p{
+  text-align: left;
+}
+
+.twofa-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.twofa-switch {
+  width: 60px;
+  height: 30px;
+  background-color: #b30000; /* Red for off */
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.twofa-switch.on {
+  background-color: #008000; /* Green for on */
+}
+
+.toggle-circle {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: left 0.3s;
+}
+
+.twofa-switch.on .toggle-circle {
+  left: 33px;
+}
+
+
+.save-settings-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #5e60ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  left: 33px;
+  width: 100px;
+}
+.save-settings-btn:hover {
+  background-color: #4b4fc1;
+}
+
+.cnt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.color-picker-header {
+  display: flex;
+  position: absolute;
+  top: 2%;
+  align-items: center;
+}
+
+.ball-picker-header {
+  display: flex;
+  position: absolute;
+  padding-top: 2%;
+  align-items: center;
+
+}
+
+
+.paddle-color-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  position: absolute;
+  top: 15%;
+}
+
+.color-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.color-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.color-circle:hover {
+transform: scale(1.1);
+box-shadow: 0 0 0 3px #aaa;
+}
+
+.color-circle.selected {
+  border: 3px solid #00ff00;
+}
+
+.ball-options {
+display: flex;
+
+flex-direction: column;
+align-items: center;
+gap: 30px;
+padding-top: 47%;
+}
+
+.ball-row {
+display: flex;
+gap: 30px;
+}
+
+.ball-image {
+width: 160px;
+height: 160px;
+border-radius: 50%;
+cursor: pointer;
+transition: transform 0.2s, border 0.2s;
+}
+
+.ball-image.selected {
+  border: 3px solid #00ff00;
+}
+
+.ball-image:hover {
+transform: scale(1.1);
+box-shadow: 0 0 0 3px #aaa;
+}
+
+.logout {
+position: absolute;
+bottom: -18px;
+right: -18px;
+}
+
+.logout a {
+z-index: 1; /* Ensure the link is interactive */
+}
+
+.logout img {
+width: 43px;
+height: auto;
+}
+
+.logout:hover {
+transform: scale(1.1); /* Smooth scaling effect */
+cursor: pointer; /* Pointer cursor on hover */
+transition: transform 0.2s ease; /* Smooth transition */
+}
+
+input:disabled::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}

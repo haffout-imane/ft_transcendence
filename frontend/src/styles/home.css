@@ -1,0 +1,93 @@
+/* Carousel Styling */
+.carousel-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    z-index: 2;
+  }
+  
+  .previous-icon,
+  .next-icon {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .carousel-container {
+    width: 1980px; /* 3 cards * 600px + 2 * 60px gap */
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    gap: 60px;
+  }
+  
+  .carousel-track a {
+    flex: 0 0 600px;
+  }
+  
+  .carousel-track img {
+    width: 100%;
+    height: auto;
+    border-radius: 32px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Floating Animation Variants */
+  .carousel-track a:nth-child(1) img {
+    animation: float1 5s ease-in-out infinite;
+  }
+  
+  .carousel-track a:nth-child(2) img {
+    animation: float2 5s ease-in-out infinite;
+  }
+  
+  .carousel-track a:nth-child(3) img {
+    animation: float3 5s ease-in-out infinite;
+  }
+  
+  .carousel-track a:nth-child(4) img {
+    animation: float4 5s ease-in-out infinite;
+  }
+  
+  .carousel-track a:nth-child(5) img {
+    animation: float5 5s ease-in-out infinite;
+  }
+  
+  /* Different Float Keyframes */
+  @keyframes float1 {
+    0% { transform: translateY(0) rotateZ(0deg); }
+    50% { transform: translateY(-12px) rotateZ(1deg); }
+    100% { transform: translateY(0) rotateZ(0deg); }
+  }
+  
+  @keyframes float2 {
+    0% { transform: translateY(0) rotateZ(0deg); }
+    50% { transform: translateY(-8px) rotateZ(-1deg); }
+    100% { transform: translateY(0) rotateZ(0deg); }
+  }
+  
+  @keyframes float3 {
+    0% { transform: translateY(0) rotateZ(0deg); }
+    50% { transform: translateY(-10px) rotateZ(2deg); }
+    100% { transform: translateY(0) rotateZ(0deg); }
+  }
+  
+  @keyframes float4 {
+    0% { transform: translateY(0) rotateZ(0deg); }
+    50% { transform: translateY(-6px) rotateZ(-2deg); }
+    100% { transform: translateY(0) rotateZ(0deg); }
+  }
+  
+  @keyframes float5 {
+    0% { transform: translateY(0) rotateZ(0deg); }
+    50% { transform: translateY(-14px) rotateZ(1.5deg); }
+    100% { transform: translateY(0) rotateZ(0deg); }
+  }

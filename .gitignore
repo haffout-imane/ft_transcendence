@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# OS-specific
+.DS_Store
+
+# Optional: VSCode settings (if you use it)
+.vscode/
+
+# Build output (if applicable)
+dist/
+build/
+
+/generated/prisma
+
+./chat

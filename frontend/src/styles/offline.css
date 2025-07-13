@@ -1,0 +1,258 @@
+@keyframes pulseBirth {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
+
+.pong-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
+    align-items: center;
+    justify-content: center;
+    min-height: 1200px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: pulseBirth 0.5s ease-out forwards;
+    animation-delay: 3s;
+}
+.pong-container2 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
+    align-items: center;
+    justify-content: center;
+    min-height: 1200px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: pulseBirth 0.01s ease-out forwards;
+    animation-delay: 0s;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 0;
+    margin-top: 35px;
+}
+
+.game-logo{
+    margin: 0 1%;
+}
+
+.game-score {
+    display: flex; /* Change from inline-block to flex */
+    flex-direction:row; /* Keep the column layout */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    width: 50%;
+    height: 70px;
+    margin-top: 10px;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.game-score span {
+    font-family: 'Space Age', sans-serif;
+    font-size: 40px;
+    width: 50%;
+    
+
+}
+
+.left{
+    text-align: start;
+    border-radius: 20px 0 0 20px;
+}
+.right{
+    text-align: end;
+    border-radius: 0 20px 20px 0;
+}
+
+.player-name {
+    font-size: 30px;
+    margin: 0 30px;
+    font-weight: bold;
+}
+
+.score-value {
+    margin: 0 50px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+#pong-canvas {
+    border: 20px solid #c25a10; /* border color */
+    border-radius: 10px;
+    background: #9EB9FE;  /* table background color */
+    max-width: 90vw;
+    max-height: 70vh;
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.controls-info {
+    display: flex;
+    justify-content: space-between;
+    width: 2000px;
+    max-width: 90vw;
+    margin-top: 20px;
+    padding: 0 50px;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* EXIT BUTTON - Positioned at bottom center of the table */
+.exit-game {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#exit-game-btn {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+#exit-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.5);
+}
+
+/* GAME OVER MODAL */
+.game-over-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-modal.hidden {
+    display: none;
+}
+
+/* EXIT CONFIRMATION MODAL - Centered over the game table */
+.exit-confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.exit-confirmation-modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 4px solid #c25a10;
+    box-shadow: 0 0 30px #9f490c(0, 255, 136, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    color: #c25a10;
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.modal-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.4;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.restart-btn, .confirm-btn, .cancel-btn {
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 120px;
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, #00ff88, #00cc6a);
+    color: white;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+
+.confirm-btn {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    color: white;
+}
+
+.confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+}
+
+.cancel-btn {
+    background: linear-gradient(45deg, #666666, #444444);
+    color: white;
+}
+
+.cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
+}
+
+
+
+

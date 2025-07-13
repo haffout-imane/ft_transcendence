@@ -1,0 +1,486 @@
+.tournament-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulseBirth {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(158, 185, 254, 0);
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(158, 185, 254, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(158, 185, 254, 0.3);
+  }
+}
+
+.schema {
+  position: relative;
+  background-image: url('../assets/schema.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top 400px; /* 💡 moves the background image down */
+  width: 65%;
+  margin: 0 auto;
+  animation: pulseBirth 0.5s ease-out forwards;
+  opacity: 0;
+  animation-delay: 1s;
+}
+.schema2 {
+  position: relative;
+  background-image: url('../assets/schema.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top 400px; /* 💡 moves the background image down */
+  width: 65%;
+  margin: 0 auto;
+  animation: pulseBirth 0.001s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0s;
+}
+
+.reveal-animation {
+  animation: pulseBirth 0.6s ease-out forwards;
+}
+
+.tournament-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 90px;
+}
+
+.round-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17rem;
+}
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.crown {
+  width: 120px;
+  height: auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  z-index: 2;
+}
+
+.match-1, .match-2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25rem;
+}
+.match-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 54rem;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  background: rgba(158, 185, 254);
+}
+
+.player img {
+  width: 180px;
+  height: 180px;
+  border: 4px double rgb(158, 185, 254);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+.tournament-name {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin: 5px;
+}
+
+
+.cancel-button {
+  background: linear-gradient(45deg, #ff4444, #cc0000);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 10;
+  animation: pulseBirth 0.5s ease-out forwards;
+  opacity: 0;
+  animation-delay: 1s;
+
+}
+
+.cancel-button:hover {
+  transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.5);
+}
+
+.cancel-tournament {
+  position: relative;
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.setup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	opacity: 0;
+  }
+  
+  /* Setup overlay appear animation */
+  .setup-overlay-appear {
+	animation: setupOverlayAppear 0.5s ease-out forwards;
+  }
+  
+  /* Setup overlay disappear animation */
+  .setup-overlay-disappear {
+	animation: setupOverlayDisappear 0.5s ease-out forwards;
+  }
+  
+  @keyframes setupOverlayAppear {
+	0% {
+	  opacity: 0;
+	  backdrop-filter: blur(0px);
+	}
+	100% {
+	  opacity: 1;
+	  backdrop-filter: blur(5px);
+	}
+  }
+  
+  @keyframes setupOverlayDisappear {
+	0% {
+	  opacity: 1;
+	  backdrop-filter: blur(5px);
+	}
+	100% {
+	  opacity: 0;
+	  backdrop-filter: blur(0px);
+	}
+  }
+  
+  .setup-overlay.hidden {
+	display: none;
+  }
+  
+  .setup-content {
+	background: rgba(20, 20, 20, 0.95);
+	padding: 40px;
+	border-radius: 15px;
+	border: 4px solid #c25a10;
+	box-shadow: 0 0 30px rgba(194, 90, 16, 0.3);
+	max-width: 900px;
+	width: 90%;
+	max-height: 90vh;
+	overflow-y: auto;
+	text-align: center;
+	transform: scale(0.8);
+	animation: setupContentAppear 0.5s ease-out 0.2s forwards;
+  }
+  
+  @keyframes setupContentAppear {
+	0% {
+	  transform: scale(0.8) translateY(50px);
+	  opacity: 0;
+	}
+	100% {
+	  transform: scale(1) translateY(0);
+	  opacity: 1;
+	}
+  }
+  
+  .setup-content h2 {
+	color: #c25a10;
+	font-size: 36px;
+	margin-bottom: 30px;
+	font-family: 'Arial', sans-serif;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  .players-setup {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 25px;
+	margin: 30px 0;
+  }
+  
+  .player-setup {
+	border: 2px solid rgba(194, 90, 16, 0.5);
+	background: rgba(0, 0, 0, 0.3);
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	transform: translateY(20px);
+	opacity: 0;
+	animation: playerSetupAppear 0.3s ease-out forwards;
+  }
+  
+  .player-setup:nth-child(1) { animation-delay: 0.3s; }
+  .player-setup:nth-child(2) { animation-delay: 0.4s; }
+  .player-setup:nth-child(3) { animation-delay: 0.5s; }
+  .player-setup:nth-child(4) { animation-delay: 0.6s; }
+  
+  @keyframes playerSetupAppear {
+	0% {
+	  transform: translateY(20px);
+	  opacity: 0;
+	}
+	100% {
+	  transform: translateY(0);
+	  opacity: 1;
+	}
+  }
+  
+  .player-setup h3 {
+	color: #c25a10;
+	font-size: 24px;
+	margin-bottom: 15px;
+	font-family: 'Arial', sans-serif;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  }
+  
+  .player-setup input[type="text"] {
+	width: calc(100% - 20px);
+	padding: 12px;
+	margin: 10px 0;
+	border: 2px solid rgba(194, 90, 16, 0.5);
+	border-radius: 8px;
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	font-size: 16px;
+	font-family: 'Arial', sans-serif;
+	transition: border-color 0.3s ease;
+  }
+  
+  .player-setup input[type="text"]:focus {
+	outline: none;
+	border-color: #c25a10;
+	box-shadow: 0 0 10px rgba(194, 90, 16, 0.3);
+  }
+  
+  .player-setup input[type="text"]::placeholder {
+	color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .picture-selection p {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 16px;
+	margin: 15px 0 10px 0;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  .picture-options {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	margin: 15px 0;
+	flex-wrap: wrap;
+  }
+  
+  .picture-option {
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	border: 3px solid rgba(194, 90, 16, 0.3);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	object-fit: cover;
+  }
+  
+  .picture-option:hover {
+	border-color: rgba(194, 90, 16, 0.7);
+	transform: scale(1.05);
+  }
+  
+  .picture-option.selected {
+	border: 3px solid #c25a10;
+	box-shadow: 0 0 15px rgba(194, 90, 16, 0.5);
+  }
+  
+  .selected-picture {
+	margin-top: 15px;
+  }
+  
+  .selected-picture p {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 14px;
+	margin-bottom: 10px;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  .selected-picture img {
+	width: 80px;
+	height: 80px;
+	border-radius: 8px;
+	border: 2px solid #c25a10;
+	object-fit: cover;
+  }
+  
+  /* Tournament schema */
+  .blurred {
+	filter: blur(3px);
+	pointer-events: none;
+  }
+  
+  .eliminated {
+	opacity: 0.5;
+	filter: grayscale(100%);
+  }
+  
+  .tournament-controls {
+	text-align: center;
+	margin-top: 20px;
+	opacity: 0;
+	animation: controlsAppear 0.5s ease-out 1s forwards;
+  }
+  
+  @keyframes controlsAppear {
+	0% {
+	  opacity: 0;
+	  transform: translateY(20px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  .control-button {
+	border: none;
+	padding: 15px 30px;
+	margin: 10px;
+	font-size: 18px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-width: 150px;
+	background: linear-gradient(45deg, #007bff, #0056b3);
+	color: white;
+  }
+  
+  .control-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  }
+  
+  .done-button {
+	background: linear-gradient(45deg, #00ff88, #00cc6a);
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	font-size: 18px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-width: 150px;
+	  }
+
+  .done-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+  }
+  
+  .tournament-controls.hidden {
+	opacity: 0;
+	transform: translateY(20px);
+	display: none;
+  }
+  
+  .tournament-controls.visible {
+	opacity: 1;
+	transform: translateY(0);
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+  }
+  .start-tournament-button-container {
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	bottom : 20px;
+	left: 46.5%;
+
+
+}
+
+  .start-tournament-button {
+	background: linear-gradient(45deg, #00ff88, #00cc6a);
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	font-size: 18px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-width: 150px;
+	  }
+
+  .start-tournament-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+  }
+  
+  .exit-tournament-button {
+	background: linear-gradient(45deg, #ff0000, #cc0000);
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	font-size: 18px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-width: 150px;
+	  }
+
+  .exit-tournament-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+  }
+
+  .exit-tournament-button-container {
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	bottom : 20px;
+	left: 46.5%;
+  }
