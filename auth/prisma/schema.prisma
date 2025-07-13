@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String         @id @default(uuid())
+  username              String         @unique
+  email                 String         @unique
+  password              String?
+  profilepicture        String         @default("assets/profile/default.png")
+  slogan                String         @default("Alien404")
+  matchball             String         @default("/assets/balls/pinkara.png")
+  paddlecolor           String         @default("#C82767")
+  twofa                 Boolean        @default(false)
+  remote                Boolean        @default(false)
+  isOnline              Boolean        @default(false)
+  twofaSecret           String?
+  createdAT             DateTime       @default(now())
+  updatedAT             DateTime       @updatedAt
+  sentFriends           Friendship[]   @relation("UserFriendships")
+  receivedFriends       Friendship[]   @relation("Friendships")
+  blockedUsers          Block[]        @relation("Blocker")
+  blockedBy             Block[]        @relation("Blocked")
+  player1Matches        Match[]        @relation("Player1Matches")
+  player2Matches        Match[]        @relation("Player2Matches")
+  messages              Message[]      @relation("SenderMessages")
+  chats                 Chat[]         @relation("ChatUsers")
+  SentNotifications     Notification[] @relation("SentNotifications")
+  ReceivedNotifications Notification[] @relation("ReceivedNotifications")
+}
+
+model Friendship {
+  id       String @id @default(uuid())
+  user     User   @relation("UserFriendships", fields: [userId], references: [id])
+  userId   String
+  friend   User   @relation("Friendships", fields: [friendId], references: [id])
+  friendId String
+
+  @@unique([userId, friendId])
+}
+
+model Block {
+  id        String @id @default(uuid())
+  blocker   User   @relation("Blocker", fields: [blockerId], references: [id])
+  blockerId String
+  blocked   User   @relation("Blocked", fields: [blockedId], references: [id])
+  blockedId String
+
+  @@unique([blockerId, blockedId])
+}
+
+model Match {
+  id           String   @id @default(uuid())
+  player1Id    String
+  player2Id    String
+  player1Score Int      @default(0)
+  player2Score Int      @default(0)
+  winnerId     String? // ID of the winning player
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  player1 User @relation("Player1Matches", fields: [player1Id], references: [id])
+  player2 User @relation("Player2Matches", fields: [player2Id], references: [id])
+
+  @@map("matches")
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  name      String?
+  users     User[]    @relation("ChatUsers")
+  messages  Message[]
+  createdAt DateTime  @default(now())
+}
+
+model Message {
+  id       String   @id @default(uuid())
+  content  String
+  senderId String
+  chatId   String
+  sentAt   DateTime @default(now())
+
+  sender User @relation("SenderMessages", fields: [senderId], references: [id])
+  chat   Chat @relation(fields: [chatId], references: [id])
+}
+
+model Notification {
+  id         String   @id @default(uuid())
+  senderId   String
+  receiverId String
+  message    String
+  createdAt  DateTime @default(now())
+
+  sender   User @relation("SentNotifications", fields: [senderId], references: [id])
+  receiver User @relation("ReceivedNotifications", fields: [receiverId], references: [id])
+}
